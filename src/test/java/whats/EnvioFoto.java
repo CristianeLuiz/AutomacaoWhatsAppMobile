@@ -1,6 +1,7 @@
 package whats;
 
 
+
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import org.junit.After;
@@ -11,7 +12,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
-public class Pesquisa {
+public class EnvioFoto {
 
     private AndroidDriver<MobileElement> driver;
 
@@ -46,12 +47,12 @@ public class Pesquisa {
         driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
         MobileElement enter = driver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout[2]/android.widget.LinearLayout/androidx.recyclerview.widget.RecyclerView/android.widget.RelativeLayout/android.widget.LinearLayout/android.widget.LinearLayout[1]/android.widget.FrameLayout/android.widget.TextView");
         enter.click();
-        driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-        MobileElement message = driver.findElementById("com.whatsapp:id/entry");
-        message.sendKeys("oi amor!");
-        driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-        MobileElement send = driver.findElementById("com.whatsapp:id/send");
-        send.click();
+        MobileElement el1 = (MobileElement) driver.findElementByAccessibilityId("Camera");
+        el1.click();
+        MobileElement el2 = (MobileElement) driver.findElementByXPath("(//android.widget.ImageView[@content-desc=\"Photo\"])[1]");
+        el2.click();
+        MobileElement enviar = (MobileElement) driver.findElementById("com.whatsapp:id/send");
+        enviar.click();
     }
 
 
@@ -61,3 +62,4 @@ public class Pesquisa {
         driver.quit();
     }
 }
+
