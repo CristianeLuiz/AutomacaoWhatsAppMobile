@@ -35,15 +35,15 @@ public class ChamadaVideo {
 
   @Test
   public void sampleTest() {
-    MobileElement el1 = (MobileElement) driver.findElementByAccessibilityId("WhatsApp");
-    el1.click();
+    MobileElement whats = (MobileElement) driver.findElementByAccessibilityId("WhatsApp");
+    whats.click();
     driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-    MobileElement el2 = (MobileElement) driver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/androidx.viewpager.widget.ViewPager/android.widget.LinearLayout/android.widget.ListView/android.widget.RelativeLayout[1]/android.widget.LinearLayout/android.widget.LinearLayout[1]/android.widget.FrameLayout/android.widget.TextView");
-    el2.click();
-    MobileElement el3 = (MobileElement) driver.findElementByAccessibilityId("Video call");
-    el3.click();
-    MobileElement el4 = (MobileElement) driver.findElementByAccessibilityId("End Video Call");
-    el4.click();
+    MobileElement helena = (MobileElement) driver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/androidx.viewpager.widget.ViewPager/android.widget.LinearLayout/android.widget.ListView/android.widget.RelativeLayout[1]/android.widget.LinearLayout/android.widget.LinearLayout[1]/android.widget.FrameLayout/android.widget.TextView");
+    helena.click();
+    MobileElement videoCall = (MobileElement) driver.findElementByAccessibilityId("Video call");
+    videoCall.click();
+    MobileElement endVideoCall = (MobileElement) driver.findElementByAccessibilityId("End Video Call");
+    endVideoCall.click();
   }
 
   @After

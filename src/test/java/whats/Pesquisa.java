@@ -37,6 +37,7 @@ public class Pesquisa {
     public void pesquisaTest() {
         MobileElement whats = driver.findElementByAccessibilityId("WhatsApp");
         whats.click();
+        driver.manage().timeouts().implicitlyWait(90, TimeUnit.SECONDS);
         MobileElement search = driver.findElementByAccessibilityId("Search");
         search.click();
         MobileElement input = driver.findElementById("com.whatsapp:id/search_input");
