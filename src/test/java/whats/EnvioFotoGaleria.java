@@ -1,6 +1,7 @@
 package whats;
 
 
+
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import org.junit.After;
@@ -11,7 +12,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
-public class Pesquisa {
+public class EnvioFotoGaleria {
 
     private AndroidDriver<MobileElement> driver;
 
@@ -25,6 +26,7 @@ public class Pesquisa {
         desiredCapabilities.setCapability("platformName", "android");
         desiredCapabilities.setCapability("androidVersion", "10.0 (Q) - API 29");
         desiredCapabilities.setCapability("platformVersion", "30.6.5-7324830");
+        
 
 
         URL remoteUrl = new URL("http://localhost:4723/wd/hub");
@@ -34,19 +36,19 @@ public class Pesquisa {
     }
 
     @Test
-    public void pesquisaTest() {
-        MobileElement whats = driver.findElementByAccessibilityId("WhatsApp");
+    public void fotoGaleriaTest() {
+        MobileElement whats = (MobileElement) driver.findElementByAccessibilityId("WhatsApp");
         whats.click();
-        MobileElement search = driver.findElementByAccessibilityId("Search");
-        search.click();
-        MobileElement input = driver.findElementById("com.whatsapp:id/search_input");
-        input.sendKeys("te amo");
-        MobileElement enter = driver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout[2]/android.widget.LinearLayout/androidx.recyclerview.widget.RecyclerView/android.widget.RelativeLayout/android.widget.LinearLayout/android.widget.LinearLayout[1]/android.widget.FrameLayout/android.widget.TextView");
-        enter.click();
-        MobileElement message = driver.findElementById("com.whatsapp:id/entry");
-        message.sendKeys("oi linda!");
-        MobileElement send = driver.findElementById("com.whatsapp:id/send");
+        MobileElement contato = (MobileElement) driver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/androidx.viewpager.widget.ViewPager/android.widget.LinearLayout/android.widget.ListView/android.widget.RelativeLayout[1]/android.widget.LinearLayout/android.widget.LinearLayout[1]/android.widget.FrameLayout/android.widget.TextView");
+        contato.click();
+        MobileElement camera = (MobileElement) driver.findElementByAccessibilityId("Camera");
+        camera.click();
+        driver.manage().timeouts().implicitlyWait(90, TimeUnit.SECONDS);
+        MobileElement photo = driver.findElementByXPath("(//android.widget.ImageView[@content-desc=\"Photo\"])[3]");
+        photo.click();
+        MobileElement send = (MobileElement) driver.findElementByAccessibilityId("Send");
         send.click();
+       
     }
 
     @After
@@ -54,3 +56,4 @@ public class Pesquisa {
         driver.quit();
     }
 }
+

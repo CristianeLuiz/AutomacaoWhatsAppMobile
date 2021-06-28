@@ -30,7 +30,7 @@ public class AdicionarContato {
         URL remoteUrl = new URL("http://localhost:4723/wd/hub");
 
         driver = new AndroidDriver<>(remoteUrl, desiredCapabilities);
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(90, TimeUnit.SECONDS);
     }
 
     @Test
@@ -42,14 +42,21 @@ public class AdicionarContato {
         MobileElement newContact = driver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout[2]/android.widget.ListView/android.widget.FrameLayout[2]/android.widget.RelativeLayout/android.widget.LinearLayout[1]/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.TextView");
         newContact.click();
         MobileElement name = driver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout[2]/android.widget.LinearLayout[1]/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.EditText[1]");
-        name.sendKeys("Helena");
+        name.sendKeys("Cristiane");
         MobileElement lastName = driver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout[2]/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.EditText[2]");
-        lastName.sendKeys("Ramos");
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        lastName.sendKeys("Luiz");
+        driver.manage().timeouts().implicitlyWait(90, TimeUnit.SECONDS);
         MobileElement phone = driver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout[2]/android.widget.LinearLayout[2]/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.EditText");
-        phone.sendKeys("+5511972046864");
+        phone.sendKeys("+5511940050614");
         MobileElement save = driver.findElementById("com.android.contacts:id/editor_menu_save_button");
         save.click();
+        driver.manage().timeouts().implicitlyWait(90, TimeUnit.SECONDS);
+        MobileElement enter = driver.findElementByAccessibilityId("Text +55 11 9972046864");
+        enter.click();
+        MobileElement message = driver.findElementById("com.google.android.apps.messaging:id/compose_message_text");
+        message.sendKeys("Teste desafio final Bootcamp QA");
+        MobileElement send = driver.findElementById("com.google.android.apps.messaging:id/send_message_button_icon");
+        send.click();
 
     }
 
